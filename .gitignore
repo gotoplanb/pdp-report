@@ -1,0 +1,5 @@
+# system stuff
+.DS_Store
+
+# output files
+output/*
