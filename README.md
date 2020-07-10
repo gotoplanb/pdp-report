@@ -2,13 +2,11 @@
 
 ## Dependencies
 
-* `brew install Caskroom/cask/wkhtmltopdf`
-* `pip3 install pdfkit`
-* `pip3 install seaborn`
+* NodeJS
 
 ## Developing
 
-* `python -m SimpleHTTPServer 8000`
+* `npm install`
 
 ## Running
 
