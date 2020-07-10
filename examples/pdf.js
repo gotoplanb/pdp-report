@@ -6,10 +6,10 @@ const doc = new PDFDocument;
 
 // Pipe its output somewhere, like to a file or HTTP response
 // See below for browser usage
-doc.pipe(fs.createWriteStream('output/node-output.pdf'));
+doc.pipe(fs.createWriteStream('../output/node-output.pdf'));
 
 // Add an image, constrain it to a given size, and center it vertically and horizontally
-doc.image('output/200.jpg', {
+doc.image('200.jpg', {
    fit: [250, 300],
    align: 'center',
    valign: 'center'
