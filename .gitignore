@@ -1,6 +1,7 @@
 # system stuff
 .DS_Store
+node_modules
 
 # output files
 output/*
-node_modules
+
