@@ -10,4 +10,4 @@
 
 ## Running
 
-* todo
+* `node pdp-report.js`
