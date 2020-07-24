@@ -5,6 +5,7 @@ const parse = require('csv-parse/lib/sync');
 const PDFDocument = require('pdfkit');
 const now = Date.now();
 
+// These two arrays are used when iterating through columns to set which should start on new pages and the starting y-position.
 const breaks =    [true, true, false, false, false, false, false, false, false, false, false, false, true, false];
 const verticals = [100,  100,  150,  200,  250,  300,  350,  400,  450,  500,  550,  600,  100,  150];
 
