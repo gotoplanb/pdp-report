@@ -5,6 +5,9 @@ const parse = require('csv-parse/lib/sync');
 const PDFDocument = require('pdfkit');
 const now = Date.now();
 
+const breaks = [true, false, true, false, false, true, true];
+const verticals = [100, 300, 100, 300, 500, 100, 100];
+
 (async function(){
   // Read the content
   const content = await fs.readFile(`pdp-data.csv`)
@@ -17,6 +20,9 @@ const now = Date.now();
   records.forEach(record => {
     
     const reportId = record['ReportId']
+
+    // Counter to know which column/index to check for breaks and vertical position
+    let i = 0;
 
     // Create a document and pipe output
     const doc = new PDFDocument;
@@ -35,14 +41,20 @@ const now = Date.now();
 
     // Real keys
     for (const [key, value] of Object.entries(record)) {
-      console.log(`${key}: ${value}`);
-      doc.addPage()
+      // console.log(`${key}: ${value}`);
+      // console.log(i)
+      if (breaks[i] == true) {
+        doc.addPage()
           .fontSize(25)
-          .text(`${key}: ${value}`, 100, 100);
+          .text(`${key}: ${value}`, 100, verticals[i]);
+      } else {
+        doc.text(`${key}: ${value}`, 100, verticals[i]);
+      };
+      i += 1;
     }
 
     doc.end();
-    console.log("\n\n");
+    // console.log("\n\n");
 
   });
 
