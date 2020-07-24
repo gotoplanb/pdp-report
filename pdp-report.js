@@ -5,8 +5,8 @@ const parse = require('csv-parse/lib/sync');
 const PDFDocument = require('pdfkit');
 const now = Date.now();
 
-const breaks = [true, false, true, false, false, true, true];
-const verticals = [100, 300, 100, 300, 500, 100, 100];
+const breaks =    [true, true, false, false, false, false, false, false, false, false, false, false, true, false];
+const verticals = [100,  100,  150,  200,  250,  300,  350,  400,  450,  500,  550,  600,  100,  150];
 
 (async function(){
   // Read the content
@@ -29,7 +29,7 @@ const verticals = [100, 300, 100, 300, 500, 100, 100];
     doc.pipe(fspdf.createWriteStream(`output/pdp-report-${reportId}.pdf`));
 
     // Example output
-    doc.fontSize(25)
+    doc.fontSize(14)
         .text('Plastics Disclosure Project', 100, 100)
         .text('Report Format v0.0.1', 100, 200)
         .text(`Generated at ${now}`, 100, 300);
@@ -45,7 +45,7 @@ const verticals = [100, 300, 100, 300, 500, 100, 100];
       // console.log(i)
       if (breaks[i] == true) {
         doc.addPage()
-          .fontSize(25)
+          .fontSize(14)
           .text(`${key}: ${value}`, 100, verticals[i]);
       } else {
         doc.text(`${key}: ${value}`, 100, verticals[i]);
